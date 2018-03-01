@@ -23,10 +23,7 @@ The munge.key also needs to be initialized:
 ```
 sudo su  -c  'MK=/etc/munge/munge.key; dd if=/dev/urandom of=$MK bs=1k count=1 ; chmod 400 $MK'
 ```
- 
- 
-EOF
-```
+
 ## BUILD and INSTALL  slurm
 ```
 tar jxf slurm-17.11.4.tar.bz2 && cd slurm*17.11.4/
