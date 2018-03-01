@@ -1,7 +1,7 @@
 # SLURM install
 
 ##
-Install a cryptography library (OpenSSL is recommended, but libgcrypt from GNU would also suffice).
+Install a cryptography library ([OpenSSL](https://packages.ubuntu.com/trusty/libssl-dev) is recommended, but [libgcrypt](https://packages.ubuntu.com/trusty/libgcrypt11-dev) from GNU would also suffice).
 ```
 sudo apt-get install libssl-dev
 ```
