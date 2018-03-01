@@ -1,5 +1,10 @@
 # SLURM install
 
+##
+Install a cryptography library (OpenSSL is recommended, but libgcrypt from GNU would also suffice).
+```
+sudo apt-get install libssl-dev
+```
 ## GET TARBALLS
 
 ```
