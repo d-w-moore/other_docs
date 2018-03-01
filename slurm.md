@@ -21,7 +21,7 @@ sudo make install
 ```
 The munge.key also needs to be initialized:
 ```
-sudo su  -c  'MK=/etc/munge/munge.key; dd if=/dev/urandom of=$MK bs=1k count=1 ; chmod 400 $MK'
+sudo su  -c  'MK=/etc/munge/munge.key; dd if=/dev/urandom of=$MK bs=1k count=1 ; chmod 600 $MK'
 ```
 
 ## BUILD and INSTALL  slurm
