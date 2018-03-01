@@ -15,10 +15,17 @@ wget https://download.schedmd.com/slurm/slurm-17.11.4.tar.bz2
 
 ```
 tar zxf munge-0.5.13.tar.gz  && cd munge-*0.5.13/
-./configure
+./configure --prefix=/
 make
 sudo make install
-
+```
+The munge.key also needs to be initialized:
+```
+sudo su  -c  'MK=/etc/munge/munge.key; dd if=/dev/urandom of=$MK bs=1k count=1 ; chmod 400 $MK'
+```
+ 
+ 
+EOF
 ```
 ## BUILD and INSTALL  slurm
 ```
