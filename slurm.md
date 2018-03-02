@@ -11,6 +11,7 @@ sudo apt-get install libssl-dev
 wget https://github.com/dun/munge/archive/munge-0.5.13.tar.gz
 wget https://download.schedmd.com/slurm/slurm-17.11.4.tar.bz2
 ```
+
 ## BUILD AND INSTALL dun/munge
 
 ```
@@ -19,9 +20,16 @@ tar zxf munge-0.5.13.tar.gz  && cd munge-*0.5.13/
 make
 sudo make install
 ```
-The munge.key also needs to be initialized:
+Alternately, can also do:
 ```
-sudo su  -c  'MK=/etc/munge/munge.key; dd if=/dev/urandom of=$MK bs=1k count=1 ; chmod 600 $MK'
+git clone http://github.com/dun/munge.git
+cd munge ; ./configure; make ; sudo make install
+```
+The munge.key needs to be initialized:
+```
+PREFIX=/usr/local  #__ or substitute w/ --prefix path used in build 
+MUNGEKEY=$PREFIX/etc/munge/munge.key
+sudo su  -c  "dd if=/dev/urandom of=$MUNGEKEY bs=1k count=1 ;chmod 600 $MUNGEKEY"
 ```
 
 ## BUILD and INSTALL  slurm
