@@ -1,3 +1,4 @@
+# The Fool-Proof (?) guide to installing SLURM on Ubuntu 14
 
 Do the following as your personal, sudo-enabled Ubuntu user:
 
