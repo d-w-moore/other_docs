@@ -35,7 +35,11 @@ sudo chmod 600 /etc/munge/munge.key
 sudo chown -R munge:munge /var/run/munge/ /var/log/munge/ /etc/munge/
 sudo /etc/init.d/munge start
 pgrep munge -afl
+cd ..
 ```
+
+---
+
 
 Explode and build SLURM -
 
