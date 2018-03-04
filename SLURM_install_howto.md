@@ -1,6 +1,14 @@
 
 Do the following as your personal, sudo-enabled Ubuntu user:
 
+---
+
+First install one of the following for crypto support, for `munge`:
+Either do
+```sudo apt-get install libgcrypt-dev```
+or
+
+```sudo apt-get install libssl-dev```
 
 Get the tar-balls for munge ( a prerequisite ) and SLURM itself:
 ```
@@ -10,12 +18,9 @@ tar xf munge-0.5.13.tar.gz
 cd munge-munge-0.5.13/
 ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var 
 make
-grep munge /etc/{group*,passwd*}
+sudo make install
 sudo adduser --system --group munge
 man adduser
-make
-sudo make install
-echo $?
 sudo vi /etc/init.d/munge
 ```
 
