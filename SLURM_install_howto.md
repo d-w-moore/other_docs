@@ -53,7 +53,9 @@ firefox ./doc/html/configurator.easy.html
 ```
 Fill in , using hostname as all note names for a 1-node cluster example.  
 Choose ie. `/var/spool/slurmd` and `/var/spool/slurmstate`, below we'll create these directories ourselves.  
-Choose eg. "LinuxProc" option over *cgroup*, which doesn't appear to work in Ubuntu 14.  
+Choose eg. ***LinuxProc*** option over ***cgroup***, which doesn't appear to work in Ubuntu 14.  
+Make sure to use your sudo-enabled Ubuntu user instead of `slurm` for the SLURM user.
+
 Submit and copy text from web page into clipboard, then:
 ```
 sudo su -c 'cat >/usr/local/etc/slurm.conf'
