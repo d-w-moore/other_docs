@@ -75,7 +75,7 @@ sudo chown $(id -un):$(id -gn) /var/spool/slurm{d,state}/
 
 Make sure `munged` daemon is running:
 ```
-sudo /etc/init.d/munge start
+sudo /etc/init.d/munge restart
 pgrep munged -afl
 ```
 
