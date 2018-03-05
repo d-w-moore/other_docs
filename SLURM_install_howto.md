@@ -29,7 +29,7 @@ At this point, we can insert as a helpfully verbose test of STATUS at end of sta
 
   `[ $STATUS -ne 0 ] && echo "failure to start or stop ($ERRMSG)" >&2`  
 
-Create a pseudo-random random key for `munge`:  
+Create a pseudo-random key for `munge`:  
 ```
 sudo dd if=/dev/urandom of=/etc/munge/munge.key bs=1k count=1
 sudo chmod 600 /etc/munge/munge.key
