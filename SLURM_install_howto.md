@@ -21,11 +21,10 @@ cd munge-munge-0.5.13/
 make
 sudo make install
 sudo adduser --system --group munge
-man adduser
 sudo vi /etc/init.d/munge
 ```
 
-At this point, we can insert as a helpfully verbose test of STATUS at end of start-stop-daemon clause:  
+We can optionally insert this line for more verbose failure messages in the appropriate SYSTEM section (according to OS, and note Ubuntu maps to DEBIAN in this case), inside the shell function `service_start()` in `/etc/init.d/munge`. Add it just before the corresponding `;;` :  
 
   `[ $STATUS -ne 0 ] && echo "failure to start or stop ($ERRMSG)" >&2`  
 
