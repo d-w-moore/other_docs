@@ -75,7 +75,7 @@ Submit and copy text from web page into clipboard, then:
 ```
 sudo su -c 'cat >/usr/local/etc/slurm.conf'
 ```
-And paste into terminal from clipboard, using *Shift-Ctrl-V* .
+And paste into terminal from clipboard, using *Shift-Ctrl-V*
 
 Create necessary directories for SLURM:
 ```
