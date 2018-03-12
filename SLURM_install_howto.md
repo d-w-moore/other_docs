@@ -51,7 +51,17 @@ make
 make check && sudo make install
 ```
 
-Bring up browser to create configuration file
+Running SLURM configurator
+---
+
+At this time it is necessary to configure our machine for `slurmd` to run on.  First collect some needed statistics with `slurmd -C`:
+```
+/usr/local/sbin/slurmd -C
+NodeName=daniel-StPC440FX-PIIX-1996 CPUs=4 Boards=1 SocketsPerBoard=4 CoresPerSocket=1 ThreadsPerCore=1 RealMemory=2000
+```
+Without the proper values of `CPUs`, `CoresPerSocket`, and `ThreadsPerCore`,  **slurmd** will refuse to run, so keep those values handy for filling in the configuration.
+
+Now bring up a browser to create the `slurm.conf` configuration file:
 
 ```
 firefox ./doc/html/configurator.easy.html
