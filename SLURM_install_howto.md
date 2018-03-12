@@ -47,7 +47,8 @@ Explode and build SLURM -
 tar jxf slurm-17.11.4.tar.bz2 
 cd slurm-17.11.14/
 ./configure --with-munge=/usr
-make ; sudo make install
+make
+make check && sudo make install
 ```
 
 Bring up browser to create configuration file
