@@ -79,7 +79,6 @@ And paste into terminal from clipboard, using *Shift-Ctrl-V* .
 
 Create necessary directories for SLURM:
 ```
-mkdir /var/spool/slurm{d,state}
 sudo mkdir /var/spool/slurm{d,state}
 sudo chown $(id -un):$(id -gn) /var/spool/slurm{d,state}/
 ```
