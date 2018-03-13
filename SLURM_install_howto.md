@@ -67,9 +67,11 @@ Now bring up a browser to create the `slurm.conf` configuration file:
 firefox ./doc/html/configurator.easy.html
 ```
 Fill in , using hostname as all note names for a 1-node cluster example.  
-Choose ie. `/var/spool/slurmd` and `/var/spool/slurmstate`, below we'll create these directories ourselves.  
-Choose eg. ***LinuxProc*** option over ***cgroup***, which doesn't appear to work in Ubuntu 14.  
-Make sure to use your sudo-enabled Ubuntu user instead of `slurm` for the SLURM user.
+Choose ie. `/var/spool/slurmd` and `/var/spool/slurmstate`, below we'll create these directories ourselves. 
+
+Choose eg. ***LinuxProc*** option over ***cgroup***, which doesn't appear to work in Ubuntu 14. 
+
+Make sure to specify the login name of the desired SLURM user instead of `slurm`. That user does not need to be `sudo`-enabled. Use your default login, or `irods` if you wish.  SLURM can also be (reconfigured)[#SLURM_reconfigure] later to allow switching to a different user , but currently only one is allowed at a time. 
 
 Submit and copy text from web page into clipboard, then:
 ```
@@ -102,3 +104,32 @@ more /var/run/slurmctld.pid /var/run/slurmd.pid
 Use the `sbatch` command to submit a job and `squeue` to monitor SLURM's job queue.
 
 **Note** `sbatch` without arguments or options will take a shell script (make sure shebang is first line!) and, after final *Ctrl-D* to mark end of standard-input, will  place that script on the queue.
+
+To make the daemons run persistently
+---
+Under Ubuntu Linux, these lines should be added to allow the `munged` and SLURM daemons to start automatically at boot-up. (If it has been decided to run these under user control, they can be launched using `sudo` instead). Make sure they occur before the final `exit 0`:
+```
+/etc/init.d/munge restart
+/usr/local/sbin/slurmctld
+/usr/local/sbin/slurmd
+```
+
+To change the SLURM user
+---
+1. The user empowered to submit SLURM jobs does not need to have sudo, but that user's login name needs to appear in the `SlurmUser` field of the `/usr/local/etc/slurm.conf`
+2. To change the SLURM user :
+```
+sudo pkill slurm
+```
+3. Then edit the line starting with `SlurmUser=` in the `/usr/local/etc/slurm.conf`, giving it the desired user name . For this example, let's use `irods`, so the new line will be
+```
+SlurmUser=irods
+```
+4. Reset the state and ownership of the appropriate directories in `/var/spool`. 
+```
+sudo su -c "rm /var/spool/slurm*/* ; chown irods:irods /var/spool/slurm*/"
+```
+5. Restart the SLURM daemons:
+```
+sudo /etc/rc.d/local
+```
