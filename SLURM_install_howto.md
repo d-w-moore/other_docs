@@ -116,13 +116,15 @@ Under Ubuntu Linux, these lines should be added to allow the `munged` and SLURM 
 
 To change the SLURM user
 ---
-The user empowered to submit SLURM jobs does not need to have sudo, but that user's login name needs to appear in the `SlurmUser` field of the `/usr/local/etc/slurm.conf`
-To change the SLURM user :
+The user empowered to submit SLURM jobs does not need to have sudo. The system-wide SLURM user can be easily changed for our current case of the 1-node cluster. 
+
+To change the SLURM user to a different one (for this example, `irods`):
+
 1. Stop the daemons:
 ```
 sudo pkill slurm
 ```
-2. Then edit the line starting with `SlurmUser=` in the `/usr/local/etc/slurm.conf`, giving it the desired user name . For this example, let's use `irods`, so the new line will be
+2. Then edit the line starting with `SlurmUser=` to reflect the new user in the `/usr/local/etc/slurm.conf`:
 ```
 SlurmUser=irods
 ```
