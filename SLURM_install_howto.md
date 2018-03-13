@@ -122,15 +122,15 @@ To change the SLURM user :
 ```
 sudo pkill slurm
 ```
-3. Then edit the line starting with `SlurmUser=` in the `/usr/local/etc/slurm.conf`, giving it the desired user name . For this example, let's use `irods`, so the new line will be
+2. Then edit the line starting with `SlurmUser=` in the `/usr/local/etc/slurm.conf`, giving it the desired user name . For this example, let's use `irods`, so the new line will be
 ```
 SlurmUser=irods
 ```
-4. Reset the state and ownership of the appropriate directories in `/var/spool`. 
+3. Reset the state and ownership of the appropriate directories in `/var/spool`. 
 ```
 sudo su -c "rm /var/spool/slurm*/* ; chown irods:irods /var/spool/slurm*/"
 ```
-5. Restart the SLURM daemons:
+4. Restart the SLURM daemons:
 ```
 sudo /etc/rc.d/local
 ```
