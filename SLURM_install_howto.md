@@ -116,8 +116,9 @@ Under Ubuntu Linux, these lines should be added to allow the `munged` and SLURM 
 
 To change the SLURM user
 ---
-1. The user empowered to submit SLURM jobs does not need to have sudo, but that user's login name needs to appear in the `SlurmUser` field of the `/usr/local/etc/slurm.conf`
-2. To change the SLURM user :
+The user empowered to submit SLURM jobs does not need to have sudo, but that user's login name needs to appear in the `SlurmUser` field of the `/usr/local/etc/slurm.conf`
+To change the SLURM user :
+1. Stop the daemons:
 ```
 sudo pkill slurm
 ```
