@@ -103,7 +103,7 @@ more /var/run/slurmctld.pid /var/run/slurmd.pid
 
 Use the `sbatch` command to submit a job and `squeue` to monitor SLURM's job queue.
 
-**Note** `sbatch` without arguments or options will take a shell script (make sure shebang is first line!) and, after final *Ctrl-D* to mark end of standard-input, will  place that script on the queue.
+**Note** `sbatch` without arguments or options will take a shell script (make sure shebang is first line!) and, after final *Ctrl-D* to mark end of standard-input, will  place that script on the queue.  Also note the the output of the job will be sent to a file in whichever was the current working directory when `sbatch` was run.
 
 To make the daemons run persistently
 ---
