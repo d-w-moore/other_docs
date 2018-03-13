@@ -2,4 +2,4 @@
 
 ## -- installation
 
-[SLURM](./slurm.md)
+[SLURM](./SLURM_install_howto.md)
