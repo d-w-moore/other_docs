@@ -54,7 +54,7 @@ make check && sudo make install
 Running SLURM configurator
 ---
 
-At this time it is necessary to configure our machine for `slurmd` to run on.  First collect some needed statistics with `slurmd -C`:
+Before `slurmd` can run as a daemon, it's necessary to set up some configuration.  First, collect some needed statistics with `slurmd -C`:
 ```
 /usr/local/sbin/slurmd -C
 NodeName=daniel-StPC440FX-PIIX-1996 CPUs=4 Boards=1 SocketsPerBoard=4 CoresPerSocket=1 ThreadsPerCore=1 RealMemory=2000
