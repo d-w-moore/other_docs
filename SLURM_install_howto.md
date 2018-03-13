@@ -107,7 +107,7 @@ Use the `sbatch` command to submit a job and `squeue` to monitor SLURM's job que
 
 To make the daemons run persistently
 ---
-Under Ubuntu Linux, these lines should be added to allow the `munged` and SLURM daemons to start automatically at boot-up. (If it has been decided to run these under user control, they can be launched via `sudo` or a `root` login). Make sure these are placed before the final `exit 0`:
+Under Ubuntu Linux, these lines should be added to `/etc/rc.local`, to allow the `munged` and SLURM daemons to start automatically at boot-up. (If it has been decided to run these under user control, they can be launched via `sudo` or a `root` login). Make sure these are placed before the final `exit 0`:
 ```
 /etc/init.d/munge restart
 /usr/local/sbin/slurmctld
@@ -134,5 +134,5 @@ sudo su -c "rm /var/spool/slurm*/* ; chown irods:irods /var/spool/slurm*/"
 ```
 4. Restart the SLURM daemons:
 ```
-sudo /etc/rc.d/local
+sudo /etc/rc.local
 ```
