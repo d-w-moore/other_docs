@@ -14,8 +14,8 @@ done
 
 DIR=$(dirname "$0")
 [ -x "$DIR/stopSlurm" ] || {
-  echo >&2 "please drop 'stopSlurm into '$DIR' alongside this"$'\n'\
-    "script ($(basename "$0")) and make it executable"
+  echo >&2 "please drop 'stopSlurm into '$DIR' alongside this"\
+    "script ($(basename "$0"))"$'\n'" and make it executable"
   exit 1
 }
 "$DIR/stopSlurm" -q || exit $?
