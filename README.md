@@ -10,4 +10,4 @@
 
 ## Bash Scripts
 
-- processing command-line [options](./bash_optargs.md)
+- processing command-line [options](./demo_optargs.bash)
