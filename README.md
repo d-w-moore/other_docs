@@ -2,9 +2,9 @@
 
 ## SLURM
 
-- [SLURM install](.SLURM_install_howto.md)
+- [SLURM install](SLURM_install_howto.md)
 
-- handy [scripts](.SLURM_control_scripts.md) for starting /stopping SLURM daemons
+- handy [scripts](SLURM_control_scripts.md) for starting /stopping SLURM daemons
 
 ---
 
