@@ -20,26 +20,27 @@ cd munge-munge-0.5.13/
 ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var 
 make
 sudo make install
-sudo adduser --system --group munge
-sudo vi /etc/init.d/munge
+sudo adduser --system --group --no-create-home munge
 ```
 
-We can optionally insert this line for more verbose failure messages in the appropriate SYSTEM section (according to OS, and note Ubuntu maps to DEBIAN in this case), inside the shell function `service_start()` in `/etc/init.d/munge`. Add it just before the corresponding `;;` :  
-
-  `[ $STATUS -ne 0 ] && echo "failure to start ($ERRMSG)" >&2`  
-
-Create a pseudo-random key for `munge`:  
+Create and adjust owner/permissions for a pseudo-random key file for `munge`:  
 ```
 sudo dd if=/dev/urandom of=/etc/munge/munge.key bs=1k count=1
 sudo chmod 600 /etc/munge/munge.key
 sudo chown -R munge:munge /var/run/munge/ /var/log/munge/ /etc/munge/
 sudo /etc/init.d/munge start
-pgrep munge -afl
+pgrep munged -afl
 cd ..
 ```
+If the output from the above `pgrep` command is blank, the munge daemon is not running. Requirements for `munged` to run correctly on the system should be fulfilled if all the above instructions were followed verbatim, but in case of mishap we can optionally edit `/etc/init.d/munge` and add the following line as the last in the DEBIAN `case` clause of `service_start()`:
+```
+[ $STATUS -ne 0 ] && echo "failure to start ($ERRMSG)" >&2`  
+```
+If the daemon fails to start , this should provide verbose output to the reason why.
 
 ---
 
+## Building & installing SLURM itself
 
 Explode and build SLURM -
 
