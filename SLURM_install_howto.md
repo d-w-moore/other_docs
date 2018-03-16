@@ -36,7 +36,7 @@ If the output from the above `pgrep` command is blank, the munge daemon is not r
 ```
 [ $STATUS -ne 0 ] && echo "failure to start ($ERRMSG)" >&2`  
 ```
-If the daemon fails to start , this should provide verbose output to the reason why.
+If the daemon fails to start , this should provide verbose output to the reason why. Note for the purposes of this document, that if `munged` is not running for whatever reason, that must be investigated and corrected before proceeding with the SLURM installation proper.
 
 ---
 
