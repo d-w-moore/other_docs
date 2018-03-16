@@ -91,14 +91,15 @@ Create necessary directories for SLURM:
 sudo mkdir /var/spool/slurm{d,state}
 sudo chown $(id -un):$(id -gn) /var/spool/slurm{d,state}/
 ```
-
-Make sure `munged` daemon is running:
+If irods or some other user was chosen specifically, alter the content of the chown command above to be (for example):
 ```
-sudo /etc/init.d/munge restart
-pgrep munged -afl
+sudo chown irods:irods /var/spool/slurm{d,state}/
 ```
 
-And start the `slurm` daemons:
+Starting up SLURM
+---
+
+Now we can start the `slurm` daemons:
 ```
 sudo /usr/local/sbin/slurmctld 
 sudo /usr/local/sbin/slurmd
