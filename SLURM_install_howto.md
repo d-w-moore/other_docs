@@ -116,10 +116,12 @@ To make the daemons run persistently
 ---
 Under Ubuntu Linux, these lines should be added to `/etc/rc.local`, to allow the `munged` and SLURM daemons to start automatically at boot-up. (If it has been decided to run these under user control, they can be launched via `sudo` or a `root` login). Make sure these are placed before the final `exit 0`:
 ```
-/etc/init.d/munge restart
+# /etc/init.d/munge restart
 /usr/local/sbin/slurmctld
 /usr/local/sbin/slurmd
 ```
+
+Uncomment the munge line only if you opted out of making the Ubuntu boot system start `munged` at boot time.
 
 To change the SLURM user
 ---
