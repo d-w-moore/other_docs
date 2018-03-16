@@ -26,7 +26,7 @@ sudo vi /etc/init.d/munge
 
 We can optionally insert this line for more verbose failure messages in the appropriate SYSTEM section (according to OS, and note Ubuntu maps to DEBIAN in this case), inside the shell function `service_start()` in `/etc/init.d/munge`. Add it just before the corresponding `;;` :  
 
-  `[ $STATUS -ne 0 ] && echo "failure to start or stop ($ERRMSG)" >&2`  
+  `[ $STATUS -ne 0 ] && echo "failure to start ($ERRMSG)" >&2`  
 
 Create a pseudo-random key for `munge`:  
 ```
