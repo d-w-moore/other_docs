@@ -5,16 +5,21 @@
 #!/bin/bash
 
 TMUX=0
+HORZ=""
+
 while getopts t opt
 do
   case $opt in
-    t) TMUX=1  ;;
+    t) [ $((++TMUX)) -ge 2 ] && HORZ=1
   esac
 done
 
+#echo "TMUX=$TMUX"$'\n'"HORZ_arg=" ${HORZ:+'-h'}
+#exit 0;
+
 DIR=$(dirname "$0")
 [ -x "$DIR/stopSlurm" ] || {
-  echo >&2 "please copy stopSlurm into '$DIR' alongside this"\
+  echo >&2 "please drop 'stopSlurm into '$DIR' alongside this"\
     "script ($(basename "$0"))"$'\n'" and make it executable"
   exit 1
 }
@@ -29,10 +34,10 @@ cmd1="/usr/local/sbin/slurmctld"
 cmd2="/usr/local/sbin/slurmd"
 
 STATUS=0
-if [ $TMUX -eq 1 ]; then
+if [ $TMUX -ge 1 ]; then
  sudo tmux new-session \
  -d "$cmd1 -D" \; \
- split-window -d "$cmd2 -D" \; attach
+ split-window -d ${HORZ:+'-h'} "$cmd2 -D" \; attach
 else
  sudo $cmd1
  sudo $cmd2
@@ -40,7 +45,7 @@ else
  {
  pgrep -c slurmctld  || ((++STATUS)) 
  pgrep -c slurmd     || ((++STATUS)) 
- } # >/dev/null 2>&1
+ }  >/dev/null 2>&1
 fi
 exit $STATUS
 ```
