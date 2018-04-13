@@ -17,8 +17,10 @@ except KeyError:
 
 session= iRODSSession(irods_env_file=env_file) 
 
-do = 'foo.dat'
-o = session.data_objects.get('/tempZone/home/rods/foo.dat')
+dobj = 'foo.dat'
+if len(sys.argv) > 1:
+   dobj =  sys.argv[1]
+o = session.data_objects.get('/tempZone/home/rods/{}'.format(dobj))
 
 
 m = o.metadata 
